@@ -1,0 +1,5 @@
+workspace(name = "lib1")
+
+load(":deps.bzl", "register_deps")
+
+register_deps()

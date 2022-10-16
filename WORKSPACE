@@ -8,5 +8,16 @@ http_archive(
     url = "https://github.com/bazelbuild/rules_python/releases/download/0.0.1/rules_python-0.0.1.tar.gz",
 )
 
-# NOTE: did until optional provider, continue from depsets
-# https://github.com/bazelbuild/examples/tree/main/rules
+local_repository(
+    name = "lib1",
+    path = "transitive_deps/lib1",
+)
+
+local_repository(
+    name = "lib2",
+    path = "transitive_deps/lib2",
+)
+
+# calling lib2's register_deps_lib2 works too
+load("@lib1//:deps.bzl", "register_deps")
+register_deps()
