@@ -11,6 +11,7 @@ bazel test -test_output=all //:all
 # at transitive_deps/lib2
 bazel test -test_output=all //:all
 
+# at project root
 # somehow 'bazel test @lib1//:all' fails, but the below works
 bazel build @lib1//:all
 ./bazel-bin/external/lib1/test_looper
