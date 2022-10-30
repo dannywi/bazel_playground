@@ -1,3 +1,13 @@
 build --config=my_build
 build:my_build --subcommands
 build:my_build --//skylib_rules:file_picker=JOHN
+
+#### Custom CPP toolchain ####
+build:clang_cfg --crosstool_top=//toolchain:clang_suite
+build:clang_cfg --cxxopt=-std=c++17
+
+# use --cpu as differentiator
+build:clang_cfg --cpu=k8
+
+# use default Bazel C++ toolchain for host
+build:clang_cfg --host_crosstool_top=@bazel_tools//tools/cpp:toolchain
